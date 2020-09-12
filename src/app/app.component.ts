@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Rate } from '@app/models/rate';
+import { CurrencyIntervalGetterService } from '@app/services/currency-interval-getter.service';
 import { environment } from '@env/environment';
 
 @Component({
@@ -8,10 +10,16 @@ import { environment } from '@env/environment';
 })
 export class AppComponent implements OnInit {
 
-  public title = environment.projectTitle;
-  public currency: number;
+  public readonly title = environment.projectTitle;
+  public rate: Rate;
+
+  public constructor(
+    private readonly currencyIntervalGetter: CurrencyIntervalGetterService
+  ) { }
 
   public ngOnInit(): void {
-    this.currency = 1;
+    this.currencyIntervalGetter.get().subscribe(
+      (rate: Rate) => { this.rate = rate; }
+    );
   }
 }
