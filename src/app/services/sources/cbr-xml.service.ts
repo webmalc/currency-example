@@ -23,10 +23,9 @@ export class CbrXmlService implements CurrencyGetter {
   ) { }
 
   // Returns the rates
-  public get(): Observable<Rate> {
-    return this.getter.get(this.url, true).pipe(
+  public get(code: string): Observable<Rate> {
+    return this.getter.get(this.url, { responseType: 'text' }).pipe(
       map((data: string) => {
-        const code = environment.currencyCode;
         const path = `//Valute[./CharCode[contains(text(), '${code}')]]/Value`;
 
         return new Rate(

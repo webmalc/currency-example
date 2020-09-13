@@ -14,9 +14,9 @@ export class CurrencyIntervalGetterService {
   public constructor(private readonly getter: CurrencyGetterService) { }
 
   // Returns currency rates periodically
-  public get(): Observable<Rate> {
+  public get(code: string): Observable<Rate> {
     return timer(0, environment.currencyUpdateInterval).pipe(
-      mergeMap(() => this.getter.get())
+      mergeMap(() => this.getter.get(code))
     );
   }
 }

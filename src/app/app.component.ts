@@ -1,3 +1,6 @@
+
+import { Observable } from 'rxjs';
+
 import { Component, OnInit } from '@angular/core';
 import { Rate } from '@app/models/rate';
 import { CurrencyIntervalGetterService } from '@app/services/currency-interval-getter.service';
@@ -11,15 +14,13 @@ import { environment } from '@env/environment';
 export class AppComponent implements OnInit {
 
   public readonly title = environment.projectTitle;
-  public rate: Rate;
+  public rate: Observable<Rate>;
 
   public constructor(
     private readonly currencyIntervalGetter: CurrencyIntervalGetterService
   ) { }
 
   public ngOnInit(): void {
-    this.currencyIntervalGetter.get().subscribe(
-      (rate: Rate) => { this.rate = rate; }
-    );
+    this.rate = this.currencyIntervalGetter.get(environment.currencyCode);
   }
 }

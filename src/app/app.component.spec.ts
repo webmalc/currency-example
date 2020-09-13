@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { environment } from '@env/environment';
 
 import { AppComponent } from './app.component';
 
@@ -8,6 +10,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [HttpClientTestingModule]
     }).compileComponents();
   });
 
@@ -20,13 +23,6 @@ describe('AppComponent', () => {
   it("should have as title 'currency-example'", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('currency-example');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('currency-example app is running!');
+    expect(app.title).toEqual(environment.projectTitle);
   });
 });

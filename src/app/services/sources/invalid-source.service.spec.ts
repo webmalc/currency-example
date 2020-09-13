@@ -1,17 +1,18 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { CbrXmlService } from './cbr-xml.service';
+import { InvalidSourceService } from './invalid-source.service';
 
-describe('CbrXmlService', () => {
-  let service: CbrXmlService;
+describe('InvalidSourceService', () => {
+  let service: InvalidSourceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    service = TestBed.inject(CbrXmlService);
+    service = TestBed.inject(InvalidSourceService);
   });
+
 
   it('should be created', () => {
     expect(service).toBeTruthy();

@@ -1,3 +1,3 @@
 <h1>{{title}}</h1>
 
-<p *ngIf="rate">{{rate.source}}: {{rate.value}}</p>
+<p *ngIf="rate | async as data">{{ data.source }}: {{ data.value }}</p>

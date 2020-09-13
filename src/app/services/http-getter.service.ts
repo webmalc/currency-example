@@ -12,20 +12,9 @@ export class HttpGetterService {
 
   public constructor(private readonly http: HttpClient) { }
 
-
   // Returns data by an HTTP request
-  public get(
-    url: string,
-    isText: boolean = false
-  ): Observable<object | string> {
-    let response: Observable<object | string>;
-    if (isText) {
-      response = this.http.get(url, { responseType: 'text' });
-    } else {
-      response = this.http.get(url);
-    }
-
-    return response.pipe(
+  public get(url: string, options?: object): Observable<any> {
+    return this.http.get(url, options).pipe(
       retryWhen(errors => errors.pipe(
         delay(environment.httpDelay), take(environment.httpRetry)
       )),

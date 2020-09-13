@@ -7,6 +7,7 @@ export const environment = {
   currencyUpdateInterval: 10000,
   currencySources: {
     cbrJson: 'https://www.cbr-xml-daily.ru/daily_json.js',
-    cbrXml: 'https://www.cbr-xml-daily.ru/daily_utf8.xml'
+    cbrXml: 'https://www.cbr-xml-daily.ru/daily_utf8.xml',
+    invalidSource: 'https://invalid-domain-source.io'
   }
 };
