@@ -27,6 +27,17 @@ module.exports = function (config) {
         functions: 90
       }
     },
+    customLaunchers: {
+      ChromeCustom: {
+        base: 'Chrome',
+        flags: [
+          '--no-default-browser-check',
+          '--no-first-run',
+          '--disable-default-apps',
+          '--start-maximized',
+        ]
+      }
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
