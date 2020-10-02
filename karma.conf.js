@@ -28,8 +28,8 @@ module.exports = function (config) {
       }
     },
     customLaunchers: {
-      ChromeCustom: {
-        base: 'Chrome',
+      ChromiumCustom: {
+        base: 'Chromium',
         flags: [
           '--no-default-browser-check',
           '--no-first-run',
@@ -43,7 +43,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromiumCustom'],
     singleRun: false,
     restartOnFileChange: true
   });
